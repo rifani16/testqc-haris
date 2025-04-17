@@ -1,25 +1,14 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('loginUser', () => {
+  cy.visit('')
+  cy.get('[data-cy="username-input-login"]').type('qctest@qcbali03')
+  cy.get('[data-cy="password-input-login"]').type('test123')
+  cy.get('[data-cy="captcha-input-login"]').type('A3b9Z1')
+  cy.get('[data-cy="btn-submit"]').click()
+})
+
+Cypress.Commands.add('stepToCreateGuest', () => {
+  cy.get('[data-cy="front-office-reception-module"]').should('be.visible').click()
+  cy.get('[data-cy="menu-apps-button"]').should('be.visible').click()
+  cy.contains('Guest Profile').click()
+  cy.get('[data-cy="btn-add-individual"]').click()
+})

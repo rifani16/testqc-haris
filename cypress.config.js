@@ -2,8 +2,12 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
+    baseUrl : 'https://e1-vhp.com/',
     setupNodeEvents(on, config) {
-      // implement node event listeners here
     },
+    defaultCommandTimeout: 15000,  // Tunggu hingga 15 detik untuk setiap perintah
+    pageLoadTimeout: 20000,  // Tunggu hingga 20 detik untuk loading halaman
+    requestTimeout: 15000,  // Tunggu hingga 15 detik untuk request API
+    responseTimeout: 15000,  // Tunggu hingga 15 detik untuk response API
   },
 });
